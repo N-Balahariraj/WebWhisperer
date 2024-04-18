@@ -1,25 +1,22 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-    name:{
-        type: String,
-        required: true
-    },
-    phone:{
-        type: String,
-        required: true,
-        unique:[true,"Phone Number already registered"]
-    },
-    profilePic:{
-        type : Buffer,
-    },
-    passwd:{
-        type: String,
-        required: true,
-        minlength: 8
-    }
-})
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: [true, "Email already registered"],
+  },
+  profilePic: String,
+  addedOn: {
+    type: String,
+    default: Date.now(),
+  },
+});
 
-const userModel = mongoose.model('WhatsAppUser',userSchema)
+const userModel = mongoose.model("WhatsAppUser", userSchema);
 
-module.exports = userModel
+module.exports = userModel;
