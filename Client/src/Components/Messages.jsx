@@ -5,7 +5,6 @@ import Home from './Home'
 
 export default function Messages() {
     const [id,setid] = useState(-1)
-    console.log(id)
 
     return (
         <div className='Messages'>

@@ -1,34 +1,43 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Messages from './Components/Messages.jsx'
-import CallScreen from './Components/CallScreen.jsx'
-import StatusScreen from './Components/StatusScreen.jsx'
+// React Imports
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
+// Style Sheets
+import "./index.css";
+
+// Components
+import App from "./App.jsx";
+import Messages from "./Components/Messages.jsx";
+import CallScreen from "./Components/CallScreen.jsx";
+import StatusScreen from "./Components/StatusScreen.jsx";
+import Login from "./Components/Login.jsx";
 
 const router = createBrowserRouter([
   {
-    path:"/",
-    element:<App/>,
-    children:[
+    path: "/",
+    element: <App />,
+    children: [
       {
-        path:"/",
-        element:<Messages/>
+        path: "/",
+        element: <Messages />,
       },
       {
-        path:"call",
-        element:<CallScreen />
+        path: "/",
+        element: <Login />,
       },
       {
-        path:"status",
-        element:<StatusScreen/>
+        path: "calls",
+        element: <CallScreen />,
       },
-    ]
-  }
-])
+      {
+        path: "status",
+        element: <StatusScreen />,
+      },
+    ],
+  },
+]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
-)
-
+);

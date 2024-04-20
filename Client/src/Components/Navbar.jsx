@@ -13,7 +13,7 @@ export default function Navbar() {
       <div className="ChatOps">
         <div className='Header'><FaWhatsapp className='text-2xl' /> Whatsapp...</div>
         <Link to="/"><BiMessageRoundedDetail className='Ico text-2xl' /></Link>
-        <Link to="/call"><FiPhone className='Ico' /></Link>
+        <Link to="/calls"><FiPhone className='Ico' /></Link>
         <Link to="/status"><LuOrbit className='Ico' /></Link>
       </div>
       <div className="Settings">

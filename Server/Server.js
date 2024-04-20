@@ -1,3 +1,6 @@
+// Loading Environment Variables
+require('dotenv').config();
+
 // Imports
 const express = require('express')
 const mongoose = require('mongoose')
@@ -26,3 +29,5 @@ async function ConnectToDb(){
 }
 
 ConnectToDb()
+
+require('./Routes/Users.Routes.js')(app)

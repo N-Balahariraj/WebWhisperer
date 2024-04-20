@@ -1,15 +1,8 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: [true, "Email already registered"],
-  },
+  name: String,
+  email: String,
   profilePic: String,
   addedOn: {
     type: String,
@@ -17,6 +10,6 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-const userModel = mongoose.model("WhatsAppUser", userSchema);
+const wc_user = mongoose.model("WhatsAppUser", userSchema);
 
-module.exports = userModel;
+module.exports = wc_user;

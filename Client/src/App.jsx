@@ -1,17 +1,23 @@
-import { useState } from 'react'
-import './App.css'
-import Navbar from './Components/Navbar'
-import { Outlet } from 'react-router-dom'
+import { useState } from "react";
+import "./App.css";
+import Navbar from "./Components/Navbar";
+import { Outlet } from "react-router-dom";
+import Login from "./Components/Login";
 
 function App() {
-  
-  const [home,setHome] = useState(true)
+  const [isAuthenticated, setAuthentication] = useState(false);
 
   return (
-    <div className='App'>
-      <Navbar/>
-      <Outlet/>
-    </div>
-  )
+    <>
+      {isAuthenticated ? (
+        <div className="App">
+          <Navbar />
+          <Outlet />
+        </div>
+      ) : (
+        <Login authenticate={setAuthentication}/>
+      )}
+    </>
+  );
 }
-export default App
+export default App;
