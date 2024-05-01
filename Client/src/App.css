@@ -2,6 +2,24 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #202020;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  height: 100vh;
+  width: 100vw;
+}
+
 .App{
   display:flex;
 }
@@ -16,7 +34,7 @@
   padding: 10px;
 }
 
-.ChatOps{
+.Tabs{
   display: flex;
   flex-direction: column;
   font-size: larger;
@@ -47,7 +65,7 @@
   gap: 20px;
 }
 
-.Messages{
+.Box{
   display: flex;
   width: 95%;
   height: 90vh;
@@ -56,7 +74,7 @@
   overflow: hidden;
 }
 
-.Chats{
+.Contacts{
   background-color: #2c2c2c;
   width: 30%;
   padding: 1%;
@@ -66,10 +84,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 5%;
+  height: 6%;
   background-color: #383838;
   box-sizing: border-box;
   margin-top: 35px;
+  border-bottom: white;
   border-radius: 5px;
   padding: 5px;
 }
@@ -81,27 +100,25 @@
   width: 70%;
 }
 
-.ChatList{
+.ContactList{
   display: flex;
   flex-direction: column;
   height: 85%;
   margin-top: 10%;
 }
 
-.ChatCard{
+.ContactList :hover, .ContactList :active{
+  background-color: #383838;
+}
+
+.ContactCard{
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 10%;
-  margin: 2% 0;
+  height: 15%;
   border-radius: 5px;
+  padding: 3%;
+  cursor: pointer;
 }
 
-.ChatList :hover{
-  background-color: #383838;
-}
-
-.ChatList :active{
-  background-color: #454545;
-}

@@ -36,7 +36,7 @@ exports.AccessToken = async (req, res, next) => {
       return;
     }
     const data = await response.json()
-    res.status(200).send({message : "User authenticated successfully ;)", details : data})
+    res.status(200).send(data)
   } 
   catch (error) {
     res.status(500).send({message : "Internal server error", details : error})

@@ -1,44 +1,33 @@
-export const Message = [
-    {
-      id: 1,
-      messageType: "TEXT",
-      text: "Hey Man 😁",
-      senderID: 0,
-      addedOn: "12:00 PM",
-    },
-    {
-      id: 2,
-      messageType: "TEXT",
-      text: "Hey, What's up?",
-      senderID: 1,
-      addedOn: "12:01 PM",
-    },
-    {
-      id: 3,
-      messageType: "TEXT",
-      text: "All Good, What about you?",
-      senderID: 0,
-      addedOn: "12:00 PM",
-    },
-    {
-      id: 4,
-      messageType: "TEXT",
-      text: "I'm good as well",
-      senderID: 1,
-      addedOn: "12:00 PM",
-    },
-    {
-      id: 5,
-      messageType: "TEXT",
-      text: "Great 😁",
-      senderID: 0,
-      addedOn: "12:00 PM",
-    },
-    {
-      id: 6,
-      messageType: "TEXT",
-      text: "Have you subscribed The Indian Dev ?",
-      senderID: 1,
-      addedOn: "12:00 PM",
-    },
-  ];
+export let Chats;
+
+export const loadChats = async (id) => {
+  try {
+    const res = await fetch(`http://localhost:4500/getChats/${id}`);
+    const chats = await res.json()
+    Chats = chats;
+    console.log("Chats successfully retrived");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const pushChats = async (senderId, receiverId, text) => {
+  try {
+    const res = await fetch("http://localhost:4500/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        senderId,
+        receiverId,
+        text,
+      }),
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+

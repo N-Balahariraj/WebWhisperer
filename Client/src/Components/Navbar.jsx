@@ -10,7 +10,7 @@ import { LuOrbit } from "react-icons/lu";
 export default function Navbar() {
   return (
     <div className='Nav'>
-      <div className="ChatOps">
+      <div className="Tabs">
         <div className='Header'><FaWhatsapp className='text-2xl' /> Whatsapp...</div>
         <Link to="/"><BiMessageRoundedDetail className='Ico text-2xl' /></Link>
         <Link to="/calls"><FiPhone className='Ico' /></Link>

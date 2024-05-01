@@ -9,6 +9,8 @@ const cors = require('cors')
 
 // Creating App
 const app = express()
+
+// Built In Middlewares
 app.use(bodyParser.json())
 app.use(cors())
 
@@ -31,3 +33,4 @@ async function ConnectToDb(){
 ConnectToDb()
 
 require('./Routes/Users.Routes.js')(app)
+require('./Routes/Chat.Routes.js')(app)

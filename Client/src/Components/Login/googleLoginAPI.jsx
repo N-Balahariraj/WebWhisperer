@@ -20,8 +20,8 @@ export default function GoogleLogin({ authenticate }) {
         return
       }
       const data = await response.json()
-      console.log(data)
-      authenticate(true)
+      // console.log(data.details)
+      authenticate(data.details._id)
     } 
     // Catch for errors
     catch (error) {

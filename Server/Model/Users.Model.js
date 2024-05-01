@@ -10,6 +10,6 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-const wc_user = mongoose.model("WhatsAppUser", userSchema);
+const userModel = mongoose.model("WhatsAppUser", userSchema);
 
-module.exports = wc_user;
+module.exports = userModel;
