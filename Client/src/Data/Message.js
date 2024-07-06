@@ -13,7 +13,7 @@ export const loadChats = async (id) => {
 
 export const pushChats = async (senderId, receiverId, text) => {
   try {
-    const res = await fetch("http://localhost:4500/chat", {
+    const res = await fetch("https://webwhisperer.onrender.com/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

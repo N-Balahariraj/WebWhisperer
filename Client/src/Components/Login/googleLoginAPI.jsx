@@ -8,7 +8,7 @@ export default function GoogleLogin({ authenticate }) {
 
     // Send a POST request to the backend
     try {
-      const response = await fetch("http://localhost:4500/auth/google", {
+      const response = await fetch("https://webwhisperer.onrender.com/auth/google", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
