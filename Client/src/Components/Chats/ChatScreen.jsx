@@ -1,25 +1,25 @@
 // Libraries
 import React, { useState, useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
 
 // Components
-import Contact from "./Contacts";
-import Chat from "./Chats";
+import Contacts from "./Contacts";
+import Chats from "./Chats";
 import Home from "../Home";
 import { loadChats } from "../../Data/Message";
+import useAuth from "../../ContextAPIs/AuthContext";
 
 export default function Messages() {
+  const myId = useAuth().user?._id
   const [contactId, setId] = useState(0);
-  const [isAuthenticated] = useOutletContext();
 
   useEffect(() => {
-    loadChats(isAuthenticated);
+    loadChats(myId);
   }, []);
 
   return (
     <div className="Box">
-      <Contact setId={setId} myId={isAuthenticated} />
-      {contactId ? <Chat id={contactId} myId={isAuthenticated} /> : <Home />}
+      <Contacts setId={setId} myId={myId}/>
+      {contactId ? <Chats id={contactId} myId={myId}/> : <Home />}
     </div>
   );
 }

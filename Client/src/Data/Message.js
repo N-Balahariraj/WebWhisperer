@@ -1,11 +1,11 @@
-export let Chats;
+export let chatsData;
 
 export const loadChats = async (id) => {
   try {
-    const res = await fetch(`http://localhost:4500/getChats/${id}`);
+    const res = await fetch(`http://localhost:5000/getChats/${id}`);
     const chats = await res.json()
-    Chats = chats;
-    console.log("Chats successfully retrived");
+    chatsData = chats;
+    console.log("chatsData successfully retrived",chatsData);
   } catch (error) {
     console.log(error);
   }
@@ -13,7 +13,7 @@ export const loadChats = async (id) => {
 
 export const pushChats = async (senderId, receiverId, text) => {
   try {
-    const res = await fetch("https://webwhisperer.onrender.com/chat", {
+    const res = await fetch("http://localhost:5000/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

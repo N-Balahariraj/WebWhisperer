@@ -18,7 +18,7 @@ let ContactList = [
 
 const userDetails = async () => {
   try {
-    const res = await fetch("https://webwhisperer.onrender.com/users");
+    const res = await fetch("http://localhost:5000/users");
     const data = await res.json();
     if(data){
       ContactList.length = 0;

@@ -1,11 +1,11 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
-import GoogleLogin from "./googleLoginAPI";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+import {useContext} from 'react';
+import { AuthContext } from "../../ContextAPIs/AuthContext";
 
-export default function Login({authenticate}) {
+export default function Login() {
+  const {login} = useContext(AuthContext)
   return (
-    <GoogleOAuthProvider clientId="748177157900-9glch6e1n7dk5ter1b8i1qn1ee5edkib.apps.googleusercontent.com">
       <div className="flex flex-col h-[100vh] w-[100vw] font-mono">
         <div className="flex h-[30%] w-[100%] bg-[#04a782]">
           <span className="flex items-center m-auto text-2xl font-bold gap-2">
@@ -27,7 +27,7 @@ export default function Login({authenticate}) {
             <dd>2. You can logout anytime from the Web</dd>
             <dd>3. Click on signin button top continue using Whatsapp-Clone</dd>
             <dd className="flex items-center justify-around w-[45%] mt-[5%] ml-[5%] rounded-md border-2 border-[grey] hover:bg-[#181a1b]">
-              <GoogleLogin authenticate={authenticate}/>
+              <button onClick={login}>LogIn with Google </button>
               <FcGoogle className="text-lg" />
             </dd>
           </dl>
@@ -39,6 +39,5 @@ export default function Login({authenticate}) {
           />
         </div>
       </div>
-    </GoogleOAuthProvider>
   );
 }

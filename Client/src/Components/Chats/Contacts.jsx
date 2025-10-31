@@ -5,7 +5,7 @@ import { LuListFilter } from "react-icons/lu";
 import { FiEdit } from "react-icons/fi";
 import ContactCard from "./ContactCard";
 
-export default function Contact({ setId, myId }) {
+export default function Contacts({ setId,myId }) {
   const [search, setSearch] = useState("");
   const [contacts, setContacts] = useState(ContactList);
 
@@ -48,13 +48,13 @@ export default function Contact({ setId, myId }) {
       <div className="ContactList">
         {contacts
           .filter((contact) => contact._id !== myId)
-          .map((C) => {
+          .map((contact) => {
             return (
               <ContactCard
-                key={C._id}
-                id={C._id}
-                name={C.name}
-                profile={C.profilePic}
+                key={contact._id}
+                id={contact._id}
+                name={contact.name}
+                profile={contact.profilePic}
                 setId={setId}
               />
             );

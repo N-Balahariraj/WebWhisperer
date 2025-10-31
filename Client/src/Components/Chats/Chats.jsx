@@ -3,17 +3,17 @@ import { GrEmoji } from "react-icons/gr";
 import { VscMic } from "react-icons/vsc";
 import { FiPaperclip } from "react-icons/fi";
 import Contact from "../../Data/Contacts";
-import { Chats, pushChats } from "../../Data/Message";
+import { chatsData, pushChats } from "../../Data/Message";
 import ChatCard from "./ChatCard";
 import EmojiPicker from "emoji-picker-react";
 
-export default function Chat({ id, myId }) {
+export default function Chats({ id, myId }) {
   let msgList;
   const [text, setText] = useState("");
   const [pickerVisibiity, setVisibility] = useState(false);
 
-  for(const C of Chats){
-    if(C.users.includes(id)) msgList = C.messages
+  for(const chat of chatsData){
+    if(chat.users.includes(id)) msgList = chat.messages
   }
 
   const addEmoji = (emojiObj) => {
@@ -42,14 +42,13 @@ export default function Chat({ id, myId }) {
         <span className="text-lg font-Nunito">{Contact[pos].name}</span>
       </div>
       <div className="h-[80%] flex flex-col p-4 overflow-y-auto">
-        {msgList.map((M) => {
+        {msgList?.map((msg) => {
           return (
             <ChatCard
-              key={M._id}
-              // id={M._id}
-              msg={M.text}
-              sender={M.senderId}
-              me={myId}
+              key={msg._id}
+              msg={msg.text}
+              senderId={msg.senderId}
+              myId = {myId}
               // time={C.updatedAt}
             />
           );

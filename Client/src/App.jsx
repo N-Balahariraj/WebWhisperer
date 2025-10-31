@@ -2,25 +2,25 @@
 import "./App.css";
 
 // Libraries
-import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "./ContextAPIs/AuthContext.jsx";
 
 // Components
 import Navbar from "./Components/Navbar.jsx";
 import Login from "./Components/Login/Login.jsx";
 
 function App() {
-  const [isAuthenticated, setAuthentication] = useState("");
-
+  const { isAuthenticated } = useContext(AuthContext);
   return (
     <>
       {isAuthenticated ? (
         <div className="App">
           <Navbar />
-          <Outlet context={[isAuthenticated]}/>
+          <Outlet />
         </div>
       ) : (
-        <Login authenticate={setAuthentication}/>
+        <Login />
       )}
     </>
   );
