@@ -22,7 +22,7 @@ exports.AccessToken = async (req, res, next) => {
   // console.log(payload)
 
   try {   
-    const response = await fetch('http://localhost:4500/register',
+    const response = await fetch('http://localhost:5000/register',
       {
         method: 'POST',
         headers: {

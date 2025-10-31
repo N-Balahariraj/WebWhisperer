@@ -1,36 +1,27 @@
 // Loading Environment Variables
-require('dotenv').config();
+require("dotenv").config();
+const connectToDb = require("./Config/dbConfig.js");
 
 // Imports
-const express = require('express')
-const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
-const cors = require('cors')
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 // Creating App
-const app = express()
+const app = express();
 
 // Built In Middlewares
-app.use(bodyParser.json())
-app.use(cors())
+app.use(bodyParser.json());
+app.use(cors());
 
-// DB Connection
-async function ConnectToDb(){
-    try{
-        await mongoose.connect("mongodb+srv://N-Balahariraj:1sdHLRnpjHN0iopD@cluster0.jrjjd5q.mongodb.net/") 
-        console.log("DB Connection established ;)")
+// IIFE
+(async () => {
+  await connectToDb();
+  const Port = process.env.PORT;
+  app.listen(Port, () => {
+    console.log(`Listening the server at port ${Port}...`);
+  });
+})();
 
-        const Port = 4500
-        app.listen(Port,()=>{
-            console.log(`Listening the server at port ${Port}...`)
-        })
-    }
-    catch(e){
-        console.log("DB Connection Couldn't be established : ",e)
-    }
-}
-
-ConnectToDb()
-
-require('./Routes/Users.Routes.js')(app)
-require('./Routes/Chat.Routes.js')(app)
+require("./Routes/Users.Routes.js")(app);
+require("./Routes/Chat.Routes.js")(app);
